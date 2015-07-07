@@ -1,0 +1,133 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../neon-animation/neon-animation.html">
+<link rel="import" href="../neon-animation/neon-animations.html">
+<link rel="import" href="../iron-media-query/iron-media-query.html">
+
+<!--
+This element wraps some content. Navigate through different component of this type
+will trigger a ripple-animation.
+You should pass in the light dom a iron-image.
+It will be the backdrop of the component. You could also pass a div that will 
+represent the content of this component. This div will be hidden on mobile.
+
+Example:
+
+    <wid-header-backdrop id="header1">
+
+      <iron-image preload class="fit" src="http://lorempixel.com/1000/1000" sizing="cover"></iron-image>
+      <div class="fit layout horizontal center-center">
+        <div class="layout vertical center-center">
+          <h1>Header 1</h1>
+          <h3>My super backdrop header 1.</h3>
+        </div>
+        <iron-image src="http://lorempixel.com/200/200"></iron-image>
+      </div>
+
+    </wid-header-backdrop>
+
+@group Wid
+@element wid-header-backdrop
+@demo demo/index.html
+-->
+<dom-module id="wid-header-backdrop">
+  <style>
+
+    :host {
+      display: block;
+      overflow: hidden;
+    }
+
+    #placeholder {
+      opacity: 1;
+      background-color: var(--wid-header-backdrop-background-color, grey);
+    }
+
+    :host.iron-selected {
+      z-index: var(--wid-header-backdrop-z-index, 1);
+    }
+
+  </style>
+  <template>
+
+    <iron-media-query query="(max-width: 639px)" query-matches="{{_isMobile}}"></iron-media-query>
+    <div id="placeholder" class="fit"></div>
+    <div id="container">
+
+      <content select="iron-image"></content>
+      <div
+        hidden$="[[_isMobile]]">
+
+        <content select="div"></content>
+
+      </div>
+
+    </div>
+
+  </template>
+</dom-module>
+
+<script>
+(function() {
+  Polymer({
+    is: 'wid-header-backdrop',
+
+    behaviors: [
+      Polymer.NeonSharedElementAnimatableBehavior
+    ],
+
+    properties: {
+
+      /**
+       * Animation configuration. Cf `neon-animation`
+       * @type {AnimationConfig}
+       */
+      animationConfig: {
+        value: function() {
+          return {
+            'entry': [{
+              name: 'ripple-animation',
+              id: 'ripple',
+              toPage: this
+            }, {
+              name: 'fade-in-animation',
+              node: this.$.container,
+              timing: {
+                delay: 100
+              }
+            }],
+
+            'exit': [{
+              name: 'ripple-animation',
+              id: 'ripple',
+              fromPage: this
+            }]
+          };
+        }
+      },
+
+      /**
+       * Shared elements configuration. Cf `neon-animation`
+       * @type {SharedElementsConfg}
+       */
+      sharedElements: {
+        value: function() {
+          return {
+            'ripple': this.$.placeholder
+          };
+        }
+      }
+    },
+
+    /**
+     * This method update the position of the origin of the ripple animation.
+     * @param  {{x: Number, y: Number}} position The event position.
+     */
+    updateGesture: function(position) {
+      this.animationConfig.exit[0].gesture = {
+        x: position.x,
+        y: position.y
+      };
+    }
+  });
+})();
+</script>

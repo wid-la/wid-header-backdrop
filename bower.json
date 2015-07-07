@@ -1,0 +1,35 @@
+{
+  "name": "wid-header-backdrop",
+  "version": "1.0.0",
+  "authors": [
+    "Anonymous <anonymous@example.com>"
+  ],
+  "description": "This element wraps some content. Navigate through different component of this type
+will trigger a ripple-animation.",
+  "keywords": [
+    "web-component",
+    "polymer",
+    "seed"
+  ],
+  "main": "wid-header-backdrop.html",
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "homepage": "https://github.com/<USERNAME>/seed-element/",
+  "ignore": [
+    "/.*",
+    "/test/",
+    "/demo/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.0.0",
+    "neon-animation": "PolymerElements/neon-animation#~1.0.5",
+    "iron-media-query": "PolymerElements/iron-media-query#~1.0.2",
+    "iron-image": "PolymerElements/iron-image#~1.0.2",
+    "paper-styles": "PolymerElements/paper-styles#~1.0.7"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "web-component-tester": "*",
+    "iron-test-helpers": "PolymerElements/iron-test-helpers#~1.0.1",
+    "test-fixture": "PolymerElements/test-fixture#~1.0.0"
+  }
+}

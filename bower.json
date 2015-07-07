@@ -4,8 +4,7 @@
   "authors": [
     "Anonymous <anonymous@example.com>"
   ],
-  "description": "This element wraps some content. Navigate through different component of this type
-will trigger a ripple-animation.",
+  "description": "This element wraps some content. Navigate through different component of this type will trigger a ripple-animation.",
   "keywords": [
     "web-component",
     "polymer",

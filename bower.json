@@ -2,17 +2,20 @@
   "name": "wid-header-backdrop",
   "version": "1.0.0",
   "authors": [
-    "Anonymous <anonymous@example.com>"
+    "Thomas Hourlier <hourliert@gmail.com>"
   ],
   "description": "This element wraps some content. Navigate through different component of this type will trigger a ripple-animation.",
   "keywords": [
     "web-component",
+    "web-components",
     "polymer",
-    "seed"
+    "header",
+    "backdrop",
+    "ripple"
   ],
   "main": "wid-header-backdrop.html",
-  "license": "http://polymer.github.io/LICENSE.txt",
-  "homepage": "https://github.com/<USERNAME>/seed-element/",
+  "license": "MIT",
+  "homepage": "https://github.com/wid-la/wid-header-backdrop",
   "ignore": [
     "/.*",
     "/test/",
